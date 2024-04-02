@@ -13,6 +13,5 @@ check_format: install
 	npx prettier . --check
 	npx eslint .
 
-
 test: install
-	ng test --watch=false
+	npm run test -- --watch=false
