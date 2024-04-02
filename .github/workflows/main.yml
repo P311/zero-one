@@ -1,0 +1,23 @@
+name: Format_Check
+run-name: Format_Check
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  Format_Check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Format Check
+        uses: actions/checkout@v4
+      - run: |
+          cd ${{ github.workspace }} 
+          make check_format
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Format Check
+        uses: actions/checkout@v4
+      - run: |
+          cd ${{ github.workspace }} 
+          make test
