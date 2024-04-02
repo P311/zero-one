@@ -5,6 +5,7 @@ import { IntroRoutingModule } from './intro-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [IntroComponent],
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
+    MatCardModule,
   ],
 })
 export class IntroModule {}
