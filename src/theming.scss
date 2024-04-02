@@ -1,0 +1,111 @@
+@use "@angular/material" as mat;
+
+// from: @angular/material/core/theming/palette
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$primary-50: #ffebef;
+$primary-100: #ffccd5;
+$primary-200: #f2989f;
+$primary-300: #e96f79;
+$primary-400: #f54b58;
+$primary-500: #fb343f;
+$primary-600: #ec2a3e;
+$primary-700: #da1e37;
+$primary-800: #cd1430;
+$primary-900: #bf0023;
+$primary-A100: #ff8a80;
+$primary-A200: #ff5252;
+$primary-A400: #ff1744;
+$primary-A700: #d50000;
+
+$primary-palette: (
+  50: $primary-50,
+  100: $primary-100,
+  200: $primary-200,
+  300: $primary-300,
+  400: $primary-400,
+  500: $primary-500,
+  600: $primary-600,
+  700: $primary-700,
+  800: $primary-800,
+  900: $primary-900,
+  A100: $primary-A100,
+  A200: $primary-A200,
+  A400: $primary-A400,
+  A700: $primary-A700,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$secondary-50: #d5f6f1;
+$secondary-100: #94e9da;
+$secondary-200: #1edac1;
+$secondary-300: #00c7a7;
+$secondary-400: #00b793;
+$secondary-500: #00a880;
+$secondary-600: #009a73;
+$secondary-700: #008962;
+$secondary-800: #007954;
+$secondary-900: #005b36;
+$secondary-A100: #c6e5c4;
+$secondary-A200: #a1d49e;
+$secondary-A400: #5eb85a;
+$secondary-A700: #2b8a29;
+
+$secondary-palette: (
+  50: $secondary-50,
+  100: $secondary-100,
+  200: $secondary-200,
+  300: $secondary-300,
+  400: $secondary-400,
+  500: $secondary-500,
+  600: $secondary-600,
+  700: $secondary-700,
+  800: $secondary-800,
+  900: $secondary-900,
+  A100: $secondary-A100,
+  A200: $secondary-A200,
+  A400: $secondary-A400,
+  A700: $secondary-A700,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$light-primary-bg: #ffebef;
