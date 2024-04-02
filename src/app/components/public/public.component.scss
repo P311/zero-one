@@ -1,3 +1,5 @@
+@import "../../../theming.scss";
+
 .nav-btns {
   border-radius: 20px;
   margin: 6px 12px;
@@ -5,4 +7,15 @@
 
 button {
   font-size: 16px;
+}
+
+#nav {
+  position: fixed; 
+  background-color: white;
+  transition: top 0.3s;
+  top: 0;
+}
+
+.scroll-down{
+  top: -64px !important;
 }
