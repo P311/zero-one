@@ -1,4 +1,5 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-public',
@@ -6,22 +7,21 @@ import { Component, HostListener, ViewChild } from '@angular/core';
   styleUrl: './public.component.scss',
 })
 export class PublicComponent {
-  @ViewChild('nav') nav: any;
+  @ViewChild('nav') nav!: MatToolbar;
 
   prevScrollpos = window.pageYOffset;
 
   @HostListener('window:scroll', [])
-  onScroll(){
+  onScroll() {
     const currentScrollPos = window.pageYOffset;
-    let nav = document.querySelector("#nav");
-    if (nav){
-      if (this.prevScrollpos > currentScrollPos){
-        nav.classList.add("scroll-down");
+    const nav = document.querySelector('#nav');
+    if (nav) {
+      if (this.prevScrollpos > currentScrollPos && currentScrollPos > 0) {
+        nav.classList.add('scroll-down');
       } else {
-        nav.classList.remove("scroll-down");
+        nav.classList.remove('scroll-down');
       }
     }
     this.prevScrollpos = currentScrollPos;
   }
-
 }
