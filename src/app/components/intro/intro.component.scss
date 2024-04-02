@@ -1,7 +1,29 @@
-#main-btn{
+@import "../../../theming.scss";
+
+#main-btn {
   padding: 0px 35px;
   border-radius: 30px;
   margin: 35px 0px;
   font-size: 20px;
   height: 55px;
+}
+
+#section-2 {
+  background-color: $secondary-50;
+  height: 550px;
+}
+
+.benefit {
+  padding: 60px;
+  display: flex;
+}
+
+#section-2-container {
+  padding-top: 5%;
+}
+
+.mat-icon {
+  width: 45px;
+  height: 45px;
+  font-size: 35px;
 }
