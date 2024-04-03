@@ -1,0 +1,14 @@
+@import "../../../theming.scss";
+
+.leftArrow,
+.rightArrow {
+  font-size: 45px;
+  color: $primary-400;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+  color: $primary-200;
+}
