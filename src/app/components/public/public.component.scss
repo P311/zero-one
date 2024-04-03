@@ -22,7 +22,7 @@ button {
 
 #public-footer {
   height: 250px;
-  background-color: $primary-400;
+  background-color: $primary-600;
   color: $light-primary-text !important;
 }
 
@@ -49,11 +49,11 @@ li a:hover {
   margin: 35px 0px;
   font-size: 20px;
   height: 55px;
-  background-color: $secondary-400;
-  color: white;
+  background-color: white;
+  color: $primary-600;
   font-weight: 700;
 }
 
 #footer-btn:hover {
-  background-color: $secondary-300;
+  background-color: whitesmoke;
 }
