@@ -28,8 +28,10 @@
   font-size: 35px;
 }
 
-#section-3-header {
+#section-3-header,
+#section-4-header {
   padding-top: 2%;
+  padding-bottom: 1%;
 }
 
 #section-3-container {
@@ -42,4 +44,9 @@
 
 .section-3-description {
   margin: 20px auto;
+}
+
+#section-4 {
+  background-color: $secondary-50;
+  height: 650px;
 }

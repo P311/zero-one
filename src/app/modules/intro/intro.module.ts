@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { ImageSliderModule } from '../image-slider/image-slider.module';
 
 @NgModule({
   declarations: [IntroComponent],
@@ -16,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
     MatGridListModule,
     MatIconModule,
     MatCardModule,
+    ImageSliderModule,
   ],
 })
 export class IntroModule {}
