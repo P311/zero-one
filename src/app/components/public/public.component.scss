@@ -14,6 +14,7 @@ button {
   background-color: white;
   transition: top 0.3s;
   top: 0;
+  z-index: 100;
 }
 
 .scroll-down {
