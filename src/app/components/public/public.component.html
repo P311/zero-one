@@ -8,38 +8,38 @@
         <button
           mat-button
           class="nav-btns"
-          aria-label="简历定制"
+          aria-label="Create Resume"
           routerLink="/"
           fragment="resumeBuild"
         >
-          简历定制
+          Create Resume
         </button>
         <button
           mat-button
           class="nav-btns"
-          aria-label="产品特点"
+          aria-label="Our Product"
           routerLink="/"
           fragment="properties"
         >
-          产品特点
+          Our Product
         </button>
         <button
           mat-button
           class="nav-btns"
-          aria-label="关于我们"
+          aria-label="About Us"
           routerLink="/"
           fragment="aboutUs"
         >
-          关于我们
+          About Us
         </button>
         <button
           mat-button
           class="nav-btns"
-          aria-label="用户反馈"
+          aria-label="Customer Feedback"
           routerLink="/"
           fragment="feedbacks"
         >
-          用户反馈
+          Customer Feedback
         </button>
       </div>
       <div class="col text-end">
@@ -49,7 +49,7 @@
           class="nav-btns"
           style="padding: 0px 35px"
         >
-          登录
+          Login
         </button>
         <button
           mat-raised-button
@@ -57,63 +57,190 @@
           class="nav-btns"
           style="padding: 0px 35px"
         >
-          注册
+          Register
         </button>
       </div>
     </div>
   </div>
 </mat-toolbar>
+
+<mat-toolbar id="mobile-nav" #nav>
+  <mat-toolbar-row>
+    <div class="col text-start">
+      <img src="assets/logo.png" style="height: 32px; margin: 8px 0px" />
+    </div>
+    <button
+      mat-icon-button
+      aria-label="Breadcrumb button"
+      (click)="expandRow = !expandRow"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row *ngIf="expandRow">
+    <span
+      class="mobile-nav-btn"
+      aria-label="Create Resume"
+      routerLink="/"
+      fragment="resumeBuild"
+    >
+      Create Resume
+    </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="expandRow">
+    <span
+      class="mobile-nav-btn"
+      aria-label="Our Product"
+      routerLink="/"
+      fragment="properties"
+    >
+      Our Product
+    </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="expandRow">
+    <span
+      class="mobile-nav-btn"
+      aria-label="About Us"
+      routerLink="/"
+      fragment="aboutUs"
+    >
+      About Us
+    </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="expandRow">
+    <span
+      class="mobile-nav-btn"
+      aria-label="Customer Feedback"
+      routerLink="/"
+      fragment="feedbacks"
+    >
+      Customer Feedback
+    </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="expandRow">
+    <span class="mobile-nav-btn mobile-nav-btn-special" aria-label="Login">
+      Login
+    </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="expandRow">
+    <span class="mobile-nav-btn mobile-nav-btn-special" aria-label="Register">
+      Register
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet> </router-outlet>
-<section id="public-footer">
+
+<section id="footer">
   <div class="container h-100">
     <div class="row align-items-center h-100">
       <div class="col">
         <ul>
-          <h5>联系方式</h5>
+          <h5>Test</h5>
           <li>
-            <a href="/">通用</a>
+            <a href="/">Test</a>
           </li>
           <li>
-            <a href="/">通用</a>
+            <a href="/">Test</a>
           </li>
           <li>
-            <a href="/">通用</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col">
-        <ul>
-          <h5>关于我们</h5>
-          <li>
-            <a href="/">通用</a>
-          </li>
-          <li>
-            <a href="/">通用</a>
-          </li>
-          <li>
-            <a href="/">通用</a>
+            <a href="/">Test</a>
           </li>
         </ul>
       </div>
       <div class="col">
         <ul>
-          <h5>简历模板</h5>
+          <h5>Test</h5>
           <li>
-            <a href="/">通用</a>
+            <a href="/">Test</a>
           </li>
           <li>
-            <a href="/">通用</a>
+            <a href="/">Test</a>
           </li>
           <li>
-            <a href="/">通用</a>
+            <a href="/">Test</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <h5>Test</h5>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
           </li>
         </ul>
       </div>
       <div class="col">
         <button mat-stroked-button color="primary" id="footer-btn">
-          免费生成专业简历
+          Create Resume
         </button>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="mobile-footer">
+  <div class="container h-100" style="padding-top: 15px">
+    <div class="row align-items-center">
+      <div class="col">
+        <ul>
+          <h5>Test</h5>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <h5>Test</h5>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <h5>Test</h5>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+          <li>
+            <a href="/">Test</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <button
+        mat-stroked-button
+        color="primary"
+        id="footer-btn"
+        class="mobile-footer-btn"
+      >
+        Create Resume
+      </button>
     </div>
   </div>
 </section>

@@ -1,5 +1,29 @@
 @import "../../../theming.scss";
 
+@media (min-width: 1100px) {
+  #mobile-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  #nav {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  #footer {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  #mobile-footer {
+    display: none;
+  }
+}
+
 .nav-btns {
   border-radius: 20px;
   margin: 6px 12px;
@@ -9,7 +33,16 @@ button {
   font-size: 16px;
 }
 
-#nav {
+.mobile-nav-btn {
+  padding-left: 15px;
+}
+
+.mobile-nav-btn-special {
+  color: $primary-400;
+}
+
+#nav,
+#mobile-nav {
   position: fixed;
   background-color: white;
   transition: top 0.3s;
@@ -21,7 +54,8 @@ button {
   top: -64px !important;
 }
 
-#public-footer {
+#footer,
+#mobile-footer {
   height: 250px;
   background-color: $primary-600;
   color: $light-primary-text !important;
@@ -53,6 +87,11 @@ li a:hover {
   background-color: white;
   color: $primary-600;
   font-weight: 700;
+}
+
+.mobile-footer-btn {
+  width: 280px;
+  margin: auto !important;
 }
 
 #footer-btn:hover {
