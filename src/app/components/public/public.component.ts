@@ -11,6 +11,8 @@ export class PublicComponent {
 
   prevScrollpos = window.pageYOffset;
 
+  public expandRow = false;
+
   @HostListener('window:scroll', [])
   onScroll() {
     const currentScrollPos = window.pageYOffset;

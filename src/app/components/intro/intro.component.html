@@ -1,127 +1,179 @@
 <section id="resumeBuild">
   <div class="container text-center">
-    <div class="row">
+    <div class="row" id="intro-1">
       <div class="col-7" style="padding-top: 15%">
-        <h1>名企精英都在用的专业简历</h1>
-        <div>30 分钟快速制作一份完美简历，帮助 500 万人才直通面试</div>
+        <h1>Professional Resume & Cover Letter Tools For Any Job</h1>
+        <div>
+          Create a resume in 30 minutes, help 3 millions people to get a job
+        </div>
         <button
           mat-raised-button
           color="primary"
           id="main-btn"
           style="font-weight: 600"
         >
-          免费生成专业简历
+          Create My Resume
         </button>
       </div>
-      <div class="col-5">
+      <div class="col-5" style="padding-top: 50px">
         <img src="assets/intro-1.png" style="width: 30vw" />
       </div>
     </div>
+    <div class="row" id="mobile-intro-1">
+      <div style="padding-top: 15%">
+        <h1>Professional Resume & Cover Letter Tools For Any Job</h1>
+        <div>
+          Create a resume in 30 minutes, help 3 millions people to get a job
+        </div>
+        <button
+          mat-raised-button
+          color="primary"
+          id="main-btn"
+          style="font-weight: 600"
+        >
+          Create My Resume
+        </button>
+      </div>
+    </div>
   </div>
 </section>
+
 <section id="properties">
   <div class="container h-100" id="section-2-container">
-    <div class="row align-items-center">
+    <div
+      class="row align-items-center"
+      [ngClass]="
+        screenSize >= 2
+          ? 'row-cols-3'
+          : screenSize == 1
+            ? 'row-cols-2'
+            : 'row-cols-1'
+      "
+    >
       <div class="col benefit">
-        <div>
-          <mat-icon
-            [color]="'primary'"
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="timeline"
-          ></mat-icon>
-        </div>
-        <div>
-          <h4>专业模板</h4>
-          由人力资源专家设计并推荐
+        <div style="margin: auto" class="row">
+          <div class="col-2">
+            <mat-icon
+              [color]="'primary'"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="timeline"
+            ></mat-icon>
+          </div>
+          <div class="col-10">
+            <h4>Easy online resume builder</h4>
+            Create an awesome resume in minutes, without leaving your web
+            browser.
+          </div>
         </div>
       </div>
       <div class="col benefit">
-        <div>
-          <mat-icon
-            [color]="'primary'"
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="add_comment"
-          ></mat-icon>
-        </div>
-        <div>
-          <h4>智能优化</h4>
-          自动纠错，让简历脱颖而出
-        </div>
-      </div>
-      <div class="col benefit">
-        <div>
-          <mat-icon
-            [color]="'primary'"
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="verified_user"
-          ></mat-icon>
-        </div>
-        <div>
-          <h4>简历直推</h4>
-          先人一步，直达面试机会
-        </div>
-      </div>
-    </div>
-    <div class="row align-items-center">
-      <div class="col benefit">
-        <div>
-          <mat-icon
-            [color]="'primary'"
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="business"
-          ></mat-icon>
-        </div>
-        <div>
-          <h4>职位匹配</h4>
-          精准投递，简历不再石沉大海
+        <div style="margin: auto" class="row">
+          <div class="col-2">
+            <mat-icon
+              [color]="'primary'"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="timeline"
+            ></mat-icon>
+          </div>
+          <div class="col-10">
+            <h4>Easy online resume builder</h4>
+            Create an awesome resume in minutes, without leaving your web
+            browser.
+          </div>
         </div>
       </div>
       <div class="col benefit">
-        <div>
-          <mat-icon
-            [color]="'primary'"
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="work"
-          ></mat-icon>
-        </div>
-        <div>
-          <h4>找工作</h4>
-          热门公司任你选
+        <div style="margin: auto" class="row">
+          <div class="col-2">
+            <mat-icon
+              [color]="'primary'"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="timeline"
+            ></mat-icon>
+          </div>
+          <div class="col-10">
+            <h4>Easy online resume builder</h4>
+            Create an awesome resume in minutes, without leaving your web
+            browser.
+          </div>
         </div>
       </div>
       <div class="col benefit">
-        <div>
-          <mat-icon
-            [color]="'primary'"
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="call"
-          ></mat-icon>
+        <div style="margin: auto" class="row">
+          <div class="col-2">
+            <mat-icon
+              [color]="'primary'"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="timeline"
+            ></mat-icon>
+          </div>
+          <div class="col-10">
+            <h4>Easy online resume builder</h4>
+            Create an awesome resume in minutes, without leaving your web
+            browser.
+          </div>
         </div>
-        <div>
-          <h4>移动端</h4>
-          及时沟通不断线
+      </div>
+      <div class="col benefit">
+        <div style="margin: auto" class="row">
+          <div class="col-2">
+            <mat-icon
+              [color]="'primary'"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="timeline"
+            ></mat-icon>
+          </div>
+          <div class="col-10">
+            <h4>Easy online resume builder</h4>
+            Create an awesome resume in minutes, without leaving your web
+            browser.
+          </div>
+        </div>
+      </div>
+      <div class="col benefit">
+        <div style="margin: auto" class="row">
+          <div class="col-2">
+            <mat-icon
+              [color]="'primary'"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="timeline"
+            ></mat-icon>
+          </div>
+          <div class="col-10">
+            <h4>Easy online resume builder</h4>
+            Create an awesome resume in minutes, without leaving your web
+            browser.
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section style="height: 750px" id="aboutUs">
+
+<section id="aboutUs">
   <div class="section-header text-center" id="section-3-header">
-    <h2>明星导师团</h2>
-    <p>
-      导师将人们的潜能释放出来，帮助他们达到最佳状态。重点是帮助人们学习而不是给他们授课
-    </p>
+    <h2>Our team</h2>
+    <p>We help customers release their potential.</p>
   </div>
   <div class="container" id="section-3-container">
-    <div class="row align-items-center">
+    <div
+      class="row align-items-center"
+      [ngClass]="
+        screenSize == 3
+          ? 'row-cols-4'
+          : screenSize >= 1
+            ? 'row-cols-2'
+            : 'row-cols-1'
+      "
+    >
       <div class="col">
-        <mat-card class="example-card">
+        <mat-card class="card">
           <mat-card-header>
             <mat-card-title>Lydia</mat-card-title>
             <mat-card-subtitle>测试</mat-card-subtitle>
@@ -142,7 +194,7 @@
         </mat-card>
       </div>
       <div class="col">
-        <mat-card class="example-card">
+        <mat-card class="card">
           <mat-card-header>
             <mat-card-title>Lydia</mat-card-title>
             <mat-card-subtitle>测试</mat-card-subtitle>
@@ -164,7 +216,7 @@
         </mat-card>
       </div>
       <div class="col">
-        <mat-card class="example-card">
+        <mat-card class="card">
           <mat-card-header>
             <mat-card-title>Lydia</mat-card-title>
             <mat-card-subtitle>测试</mat-card-subtitle>
@@ -185,7 +237,7 @@
         </mat-card>
       </div>
       <div class="col">
-        <mat-card class="example-card">
+        <mat-card class="card">
           <mat-card-header>
             <mat-card-title>Lydia</mat-card-title>
             <mat-card-subtitle>测试</mat-card-subtitle>
@@ -210,9 +262,9 @@
   </div>
 </section>
 
-<section id="feedbacks">
+<!-- <section id="feedbacks">
   <div class="section-header text-center" id="section-4-header">
     <h2>用户反馈</h2>
   </div>
   <app-image-slider [image_paths]="feedbacks"></app-image-slider>
-</section>
+</section> -->
