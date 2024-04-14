@@ -1,0 +1,87 @@
+<div id="body-div">
+  <div class="center-screen">
+    <mat-card>
+      <mat-card-content>
+        <div class="container">
+          <div class="row">
+            <img
+              src="assets/logo.png"
+              style="height: 70px; margin: 30px auto; width: auto"
+            />
+          </div>
+          <div class="row">
+            <mat-form-field class="auth-text-input">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                placeholder="First name"
+                [formControl]="firstName"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="auth-text-input">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                placeholder="Last name"
+                [formControl]="lastName"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="auth-text-input">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Email"
+                [formControl]="email"
+                (blur)="updateErrorMessage()"
+                required
+              />
+              @if (email.invalid) {
+                <mat-error>{{ errorMessage }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="auth-text-input">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                placeholder="Password"
+                [formControl]="password"
+                required
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <button mat-flat-button id="register-btn" color="primary">
+              Register
+            </button>
+          </div>
+          <div class="row">
+            <span>
+              Have an account?
+              <a routerLink="/auth/login" id="login-btn"> Login </a>
+            </span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
