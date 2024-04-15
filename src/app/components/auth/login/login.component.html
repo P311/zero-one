@@ -16,11 +16,11 @@
                 matInput
                 placeholder="Email"
                 [formControl]="email"
-                (blur)="updateErrorMessage()"
+                (blur)="updateEmailErrorMessage()"
                 required
               />
               @if (email.invalid) {
-                <mat-error>{{ errorMessage }}</mat-error>
+                <mat-error>{{ this.errors[EMAIL_IDX] }}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -33,10 +33,19 @@
                 [formControl]="password"
                 required
               />
+              @if (password.invalid) {
+                <mat-error>{{ this.errors[PASSWORD_IDX] }}</mat-error>
+              }
             </mat-form-field>
           </div>
           <div class="row">
-            <button mat-flat-button id="login-btn" color="primary">
+            <button
+              mat-flat-button
+              [disabled]="hasError"
+              id="login-btn"
+              color="primary"
+              (click)="submitLogin()"
+            >
               Login
             </button>
           </div>
