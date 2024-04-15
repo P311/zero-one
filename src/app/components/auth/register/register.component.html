@@ -18,6 +18,9 @@
                 [formControl]="firstName"
                 required
               />
+              @if (firstName.invalid) {
+                <mat-error>{{ errors[FIRSTNAME_IDX] }}</mat-error>
+              }
             </mat-form-field>
           </div>
           <div class="row">
@@ -29,6 +32,9 @@
                 [formControl]="lastName"
                 required
               />
+              @if (lastName.invalid) {
+                <mat-error>{{ errors[LASTNAME_IDX] }}</mat-error>
+              }
             </mat-form-field>
           </div>
           <div class="row">
@@ -38,11 +44,12 @@
                 matInput
                 placeholder="Email"
                 [formControl]="email"
-                (blur)="updateErrorMessage()"
+                (blur)="updateEmailErrorMessage()"
+                autocomplete="email"
                 required
               />
               @if (email.invalid) {
-                <mat-error>{{ errorMessage }}</mat-error>
+                <mat-error>{{ errors[EMAIL_IDX] }}</mat-error>
               }
             </mat-form-field>
           </div>
@@ -54,8 +61,12 @@
                 [type]="hide ? 'password' : 'text'"
                 placeholder="Password"
                 [formControl]="password"
+                autocomplete="password"
                 required
               />
+              @if (password.invalid) {
+                <mat-error>{{ errors[PASSWORD_IDX] }}</mat-error>
+              }
               <button
                 mat-icon-button
                 matSuffix
@@ -70,7 +81,13 @@
             </mat-form-field>
           </div>
           <div class="row">
-            <button mat-flat-button id="register-btn" color="primary">
+            <button
+              mat-flat-button
+              [disabled]="hasError"
+              id="register-btn"
+              color="primary"
+              (click)="submitRegister()"
+            >
               Register
             </button>
           </div>
