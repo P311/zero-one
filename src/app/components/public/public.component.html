@@ -42,7 +42,7 @@
           Customer Feedback
         </button>
       </div>
-      <div class="col text-end">
+      <div class="col text-end" *ngIf="!isLoggingIn">
         <button
           mat-button
           color="primary"
@@ -60,6 +60,26 @@
           routerLink="/auth/register"
         >
           Register
+        </button>
+      </div>
+      <div class="col text-end" *ngIf="isLoggingIn">
+        <button
+          mat-button
+          color="primary"
+          class="nav-btns"
+          style="padding: 0px 35px"
+          (click)="logout()"
+        >
+          Logout
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          class="nav-btns"
+          style="padding: 0px 35px"
+          routerLink="/dashboard"
+        >
+          My resumes
         </button>
       </div>
     </div>
