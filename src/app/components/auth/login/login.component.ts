@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge } from 'rxjs';
-import { IdentityService } from '../../../../../api/api';
-import { TokenRequestApi } from '../../../../../api/api';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +16,23 @@ export class LoginComponent {
 
   hide = true;
 
-  errors = ['A valid email is required', 'Password is required'];
+  errors = ['A valid email is required', 'Password is required', ''];
 
   readonly EMAIL_IDX = 0;
   readonly PASSWORD_IDX = 1;
+  readonly LOGIN_IDX = 2;
 
   hasError = true;
 
-  constructor(private identityService: IdentityService) {
+  isLoading = false;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {
+    if (this.authService.isLoggingIn()) {
+      this.router.navigate(['/resume']);
+    }
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateEmailErrorMessage());
@@ -55,6 +64,7 @@ export class LoginComponent {
 
   checkError() {
     for (const errorMessage of this.errors) {
+      this.errors[this.LOGIN_IDX] = '';
       if (errorMessage != '') {
         this.hasError = true;
         return;
@@ -63,20 +73,23 @@ export class LoginComponent {
     this.hasError = false;
   }
 
+  loginHandler = {
+    next: () => {
+      this.isLoading = false;
+      this.router.navigate([this.authService.redirectUrl]);
+    },
+    error: () => {
+      this.isLoading = false;
+      this.errors[this.LOGIN_IDX] =
+        'Incorrect email or password. Please try again.';
+    },
+  };
   submitLogin() {
     if (!this.hasError && this.email.value && this.password.value) {
-      const token: TokenRequestApi = {
-        email: this.email.value,
-        password: this.password.value,
-      };
-      this.identityService.identityTokenPost(token).subscribe(
-        (res) => {
-          console.log('users login' + res);
-        },
-        (error) => {
-          console.log(error);
-        },
-      );
+      this.isLoading = true;
+      this.authService
+        .login(this.email.value, this.password.value)
+        .subscribe(this.loginHandler);
     }
   }
 }

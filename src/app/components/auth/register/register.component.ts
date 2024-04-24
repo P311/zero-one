@@ -4,6 +4,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge } from 'rxjs';
 import { UsersService } from '../../../../../api/api';
 import { UserApi } from '../../../../../api/api';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +35,11 @@ export class RegisterComponent {
 
   hasError = true;
 
-  constructor(private userService: UsersService) {
+  constructor(
+    private userService: UsersService,
+    private authService: AuthService,
+    private router: Router,
+  ) {
     merge(this.firstName.statusChanges, this.firstName.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateFirstNameErrorMessage());
@@ -110,6 +116,10 @@ export class RegisterComponent {
       this.userService.usersPost(reqBody).subscribe(
         (res) => {
           console.log('users created' + res);
+          if (this.email.value && this.password.value) {
+            this.authService.login(this.email.value, this.password.value);
+            this.router.navigate(['/auth/login']);
+          }
         },
         (error) => {
           console.log(error);

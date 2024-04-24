@@ -1,62 +1,85 @@
 <div id="body-div">
   <div class="center-screen">
-    <mat-card>
-      <mat-card-content>
-        <div class="container">
-          <div class="row">
-            <img
-              src="assets/logo.png"
-              style="height: 70px; margin: 30px auto; width: auto"
-            />
-          </div>
-          <div class="row">
-            <mat-form-field class="auth-text-input">
-              <mat-label>Email</mat-label>
-              <input
-                matInput
-                placeholder="Email"
-                [formControl]="email"
-                (blur)="updateEmailErrorMessage()"
-                required
+    <form (submit)="submitLogin()">
+      <mat-card>
+        <mat-card-content>
+          <div class="container">
+            <div class="row">
+              <img
+                src="assets/logo.png"
+                style="height: 70px; margin: 30px auto; width: auto"
               />
-              @if (email.invalid) {
-                <mat-error>{{ this.errors[EMAIL_IDX] }}</mat-error>
-              }
-            </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="auth-text-input">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  placeholder="Email"
+                  [formControl]="email"
+                  (blur)="updateEmailErrorMessage()"
+                  autocomplete="email"
+                  required
+                />
+                @if (email.invalid) {
+                  <mat-error>{{ this.errors[EMAIL_IDX] }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="auth-text-input">
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  placeholder="Password"
+                  [type]="hide ? 'password' : 'text'"
+                  [formControl]="password"
+                  autocomplete="password"
+                  required
+                />
+                @if (password.invalid) {
+                  <mat-error>{{ this.errors[PASSWORD_IDX] }}</mat-error>
+                }
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                  type="button"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <button
+                mat-flat-button
+                [disabled]="hasError || isLoading"
+                id="login-btn"
+                color="primary"
+                type="submit"
+              >
+                <span *ngIf="!isLoading">Login</span>
+                <mat-spinner *ngIf="isLoading" [diameter]="30"></mat-spinner>
+              </button>
+            </div>
+            @if (this.errors[LOGIN_IDX]) {
+              <div class="row">
+                <mat-error>{{ this.errors[LOGIN_IDX] }}</mat-error>
+              </div>
+            }
+            <div class="row">
+              <span>
+                Need an account?
+                <a routerLink="/auth/register" id="register-btn"> Register </a>
+              </span>
+            </div>
           </div>
-          <div class="row">
-            <mat-form-field class="auth-text-input">
-              <mat-label>Password</mat-label>
-              <input
-                matInput
-                placeholder="Password"
-                [formControl]="password"
-                required
-              />
-              @if (password.invalid) {
-                <mat-error>{{ this.errors[PASSWORD_IDX] }}</mat-error>
-              }
-            </mat-form-field>
-          </div>
-          <div class="row">
-            <button
-              mat-flat-button
-              [disabled]="hasError"
-              id="login-btn"
-              color="primary"
-              (click)="submitLogin()"
-            >
-              Login
-            </button>
-          </div>
-          <div class="row">
-            <span>
-              Need an account?
-              <a routerLink="/auth/register" id="register-btn"> Register </a>
-            </span>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+        </mat-card-content>
+      </mat-card>
+    </form>
   </div>
 </div>

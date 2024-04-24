@@ -1,5 +1,6 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-public',
@@ -13,6 +14,14 @@ export class PublicComponent {
 
   public expandRow = false;
 
+  public isLoggingIn = false;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.isLoggingIn = this.authService.isLoggingIn();
+  }
+
   @HostListener('window:scroll', [])
   onScroll() {
     const currentScrollPos = window.pageYOffset;
@@ -25,5 +34,10 @@ export class PublicComponent {
       }
     }
     this.prevScrollpos = currentScrollPos;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.isLoggingIn = false;
   }
 }
