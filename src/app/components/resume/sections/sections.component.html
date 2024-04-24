@@ -1,0 +1,53 @@
+<app-resume-nav></app-resume-nav>
+
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer
+    #drawer
+    class="drawer"
+    mode="side"
+    [opened]="true"
+    color="primary"
+  >
+    <mat-stepper
+      class="stepper"
+      orientation="vertical"
+      [linear]="true"
+      #stepper
+      (selectionChange)="sectionChange($event)"
+      [color]="'primary'"
+      [selectedIndex]="this.selectedIndex"
+    >
+      <mat-step>
+        <ng-template matStepLabel>Heading</ng-template>
+      </mat-step>
+      <mat-step [completed]="this.selectedIndex > 0">
+        <ng-template matStepLabel>Work Experience</ng-template>
+      </mat-step>
+      <mat-step [completed]="this.selectedIndex > 1">
+        <ng-template matStepLabel>Education</ng-template>
+      </mat-step>
+      <mat-step [completed]="this.selectedIndex > 2">
+        <ng-template matStepLabel>Skills</ng-template>
+      </mat-step>
+      <mat-step [completed]="this.selectedIndex > 3">
+        <ng-template matStepLabel>Summary</ng-template>
+      </mat-step>
+      <mat-step [completed]="this.selectedIndex > 4">
+        <ng-template matStepLabel>Languages</ng-template>
+      </mat-step>
+      <mat-step [completed]="this.selectedIndex > 5">
+        <ng-template matStepLabel>Finalize</ng-template>
+      </mat-step>
+    </mat-stepper>
+  </mat-drawer>
+
+  <section id="section-container">
+    <app-header
+      [ngClass]="selectedIndex == 0 ? '' : 'not-show'"
+      (indexChange)="moveSection($event)"
+    ></app-header>
+    <app-work-exp
+      [ngClass]="selectedIndex == 1 ? '' : 'not-show'"
+    ></app-work-exp>
+  </section>
+</mat-drawer-container>

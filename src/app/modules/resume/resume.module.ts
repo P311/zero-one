@@ -2,16 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ResumeRoutingModule } from './resume-routing.module';
+import { SectionsComponent } from '../../components/resume/sections/sections.component';
 import { TemplateComponent } from '../../components/resume/template/template.component';
-import { ResumeMenuComponent } from '../../components/resume/resume-menu/resume-menu.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { HeaderComponent } from '../../components/resume/sections/header/header.component';
+import { ResumeNavComponent } from '../../components/resume/resume-nav/resume-nav.component';
+import { WorkExpComponent } from '../../components/resume/sections/work-exp/work-exp.component';
 
 @NgModule({
-  declarations: [TemplateComponent, ResumeMenuComponent],
+  declarations: [
+    TemplateComponent,
+    SectionsComponent,
+    HeaderComponent,
+    ResumeNavComponent,
+    WorkExpComponent,
+  ],
   imports: [
     CommonModule,
     ResumeRoutingModule,
@@ -19,6 +30,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatStepperModule,
     MatToolbarModule,
+    MatInputModule,
+    MatSelectModule,
   ],
 })
 export class ResumeModule {}
