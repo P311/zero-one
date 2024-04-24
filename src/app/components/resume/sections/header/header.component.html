@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row" style="margin: 40px 0">
+    <h2>What’s the best way for employers to contact you?</h2>
+    <p>
+      Let's start with the basics. To ensure employers can reach you, input at
+      least your name, email, and phone number.
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <mat-form-field class="col-4">
+      <mat-label>Name</mat-label>
+      <input matInput />
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col-2">
+      <mat-label>Country</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>City</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>State/Province</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Zip Code</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <div class="col-4"></div>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Email</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Phone</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <div class="col"></div>
+  </div>
+  <div class="row" style="margin-top: 50px">
+    <div class="col-3"></div>
+    <button mat-stroked-button color="primary" class="col-2 form-btn">
+      Cancel
+    </button>
+    <div class="col-1"></div>
+    <button
+      mat-flat-button
+      color="primary"
+      class="col-2 form-btn"
+      (click)="submitForm()"
+    >
+      Continue
+    </button>
+  </div>
+</div>

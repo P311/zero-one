@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TemplateComponent } from '../../components/resume/template/template.component';
-import { ResumeMenuComponent } from '../../components/resume/resume-menu/resume-menu.component';
+import { SectionsComponent } from '../../components/resume/sections/sections.component';
 
 const routes: Routes = [
   {
@@ -14,15 +14,8 @@ const routes: Routes = [
     component: TemplateComponent,
   },
   {
-    path: 'section',
-    component: ResumeMenuComponent,
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'template',
-      },
-    ],
+    path: 'sections',
+    component: SectionsComponent,
   },
 ];
 

@@ -1,0 +1,24 @@
+.drawer-container {
+  height: 100vh;
+}
+
+.stepper {
+  margin-top: 10vh;
+}
+
+.drawer {
+  width: 250px;
+}
+
+::ng-deep .mat-step-text-label {
+  font-size: 20px;
+}
+
+.not-show {
+  display: none;
+}
+
+#section-container {
+  margin: 100px;
+  margin-top: 10%;
+}
