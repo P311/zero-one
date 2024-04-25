@@ -14,11 +14,20 @@ const routes: Routes = [
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'test',
-    canActivate: [authguard],
-    canActivateChild: [authguard],
+    path: 'dashboard',
     loadChildren: () =>
-      import('./modules/public/public.module').then((m) => m.PublicModule),
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule,
+      ),
+    canActivateChild: [authguard],
+    canActivate: [authguard]
+  },
+  {
+    path: 'resume',
+    loadChildren: () =>
+      import('./modules/resume/resume.module').then((m) => m.ResumeModule),
+    canActivateChild: [authguard],
+    canActivate: [authguard]
   },
 ];
 
