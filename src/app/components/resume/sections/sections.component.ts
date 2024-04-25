@@ -10,15 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SectionsComponent {
   public selectedIndex = 0;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router){}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) {}
 
-  ngOnInit(){
-    this.activatedRoute.queryParams.subscribe(params => {
-      let template = params['template'];
-      if(!template){
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      const template = params['template'];
+      if (!template) {
         this.router.navigate(['/resume/template']);
       }
-    })
+    });
   }
 
   sectionChange(event: StepperSelectionEvent) {

@@ -48,6 +48,7 @@
     ></app-header>
     <app-work-exp
       [ngClass]="selectedIndex == 1 ? '' : 'not-show'"
+      (indexChange)="moveSection($event)"
     ></app-work-exp>
   </section>
 </mat-drawer-container>
