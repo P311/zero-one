@@ -1,0 +1,47 @@
+<app-resume-nav></app-resume-nav>
+
+<section id="resumeBuild">
+  <div class="container text-center">
+    <div class="row" id="intro-1" style="padding-top: 10%; padding-bottom: 5%">
+      <h1>Choose your favorite template design</h1>
+      <div>You can always change your template later</div>
+    </div>
+    <div class="row row-cols-4">
+      <div class="col" *ngFor="let template of templates">
+        <img
+          src="{{ template.path }}"
+          class="template-img"
+          [ngClass]="
+            selected != null && selected.id == template.id
+              ? 'template-selected'
+              : ''
+          "
+          (click)="selectTemplate(template)"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<mat-toolbar id="bottom-nav" #nav>
+  <div class="container">
+    <div class="row" style="height: 48px">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col">
+        <button
+          mat-flat-button
+          [disabled]="this.selected == null"
+          color="primary"
+          class="nav-btns"
+          [routerLink]="['/resume/sections']"
+          [queryParams]="{ template: selected ? selected.id : 0 }"
+          queryParamsHandling="merge"
+        >
+          Choose Template
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

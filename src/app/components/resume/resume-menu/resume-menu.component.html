@@ -1,0 +1,34 @@
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="drawer" mode="side" [opened]="true">
+    <mat-stepper
+      class="stepper"
+      orientation="vertical"
+      [linear]="true"
+      #stepper
+    >
+      <mat-step>
+        <ng-template matStepLabel>Heading</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Work Experience</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Education</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Skills</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Summary</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Languages</ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Finalize</ng-template>
+      </mat-step>
+    </mat-stepper>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>
