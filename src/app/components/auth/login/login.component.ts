@@ -76,7 +76,24 @@ export class LoginComponent {
   loginHandler = {
     next: () => {
       this.isLoading = false;
-      this.router.navigate([this.authService.redirectUrl]);
+      const urlArray = this.authService.redirectUrl.split('?');
+      const path = urlArray[0];
+      if (urlArray.length > 1) {
+        const paramsBlock = urlArray[1];
+        const paramsMap = paramsBlock.split('&').reduce((p, c) => {
+          const components = c.split('=');
+          p.set(components[0], components[1]);
+          return p;
+        }, new Map<string, string>());
+        const params: { [key: string]: string } = {};
+        paramsMap.forEach((value, key) => {
+          params[key] = value;
+        });
+
+        this.router.navigate([path], { queryParams: params });
+      } else {
+        this.router.navigate([path]);
+      }
     },
     error: () => {
       this.isLoading = false;
