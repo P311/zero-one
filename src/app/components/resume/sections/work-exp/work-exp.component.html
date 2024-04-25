@@ -1,0 +1,105 @@
+<div *ngIf="addWorkExp">
+  <div class="container">
+    <div class="row" style="margin: 40px 0">
+      <h2>Tell us about your job history</h2>
+      <p>
+        Don't have any work experience? Add school leadership positions,
+        internships, summer jobs, and unofficial jobs.
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <mat-form-field class="col">
+        <mat-label>Job Title</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Employer</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-3">
+        <mat-label>Country</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>State/Province</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field class="col-3">
+        <mat-label>City</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <div class="col-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 0px">
+      <mat-form-field class="col-2">
+        <mat-label>Start Month</mat-label>
+        <mat-select>
+          @for (month of months; track month) {
+            <mat-option [value]="month">{{ month }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Start Year</mat-label>
+        <input matInput />
+      </mat-form-field>
+
+      <mat-form-field class="col-2">
+        <mat-label>End Month</mat-label>
+        <mat-select [disabled]="currentWork">
+          @for (month of months; track month) {
+            <mat-option [value]="month">{{ month }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>End Year</mat-label>
+        <input matInput [disabled]="currentWork" />
+      </mat-form-field>
+      <div class="col"></div>
+    </div>
+    <div class="row" style="margin: 0px">
+      <mat-checkbox [color]="'primary'" (change)="currentWorkChange()"
+        >I currently work here</mat-checkbox
+      >
+    </div>
+
+    <div class="row" style="margin-top: 50px">
+      <div class="col-3"></div>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="back()"
+      >
+        Cancel
+      </button>
+      <div class="col-1"></div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="submitForm()"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!addWorkExp">
+  <div class="container">
+    <div class="row" style="margin: 40px 0">
+      <h2>Tell us about your job history</h2>
+      <p>
+        Don't have any work experience? Add school leadership positions,
+        internships, summer jobs, and unofficial jobs.
+      </p>
+    </div>
+  </div>
+</div>
