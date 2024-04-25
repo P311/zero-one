@@ -24,19 +24,6 @@ export class AuthService {
     return false;
   }
 
-  loginHandler = {
-    next: (res: SuccessTokenResponseApi) => {
-      localStorage.setItem('token', res.access_token ?? '');
-      const expiresAt = moment().add(res.expires_in, 'second');
-      console.log(JSON.stringify(expiresAt.valueOf()));
-      localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
-      return true;
-    },
-    error: () => {
-      return false;
-    },
-  };
-
   public login(email: string, password: string) {
     const token: TokenRequestApi = {
       email: email,
@@ -44,10 +31,11 @@ export class AuthService {
     };
     console.log(email, password);
     return this.identityService.identityTokenPost(token).pipe(
-      map((res) => {
+      map((res: SuccessTokenResponseApi) => {
         localStorage.setItem('token', res.access_token ?? '');
         console.log(res.access_token);
         const expiresAt = moment().add(res.expires_in, 'second');
+        console.log(this.redirectUrl);
         console.log(JSON.stringify(expiresAt.valueOf()));
         localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
         return res;
