@@ -61,7 +61,7 @@
                 [type]="hide ? 'password' : 'text'"
                 placeholder="Password"
                 [formControl]="password"
-                autocomplete="password"
+                autocomplete="new-password"
                 required
               />
               @if (password.invalid) {
@@ -83,15 +83,21 @@
           <div class="row">
             <button
               mat-flat-button
-              [disabled]="hasError"
+              [disabled]="hasError || isLoading"
               id="register-btn"
               color="primary"
               (click)="submitRegister()"
             >
-              Register
+              <span *ngIf="!isLoading">Register</span>
+              <mat-spinner *ngIf="isLoading" [diameter]="30"></mat-spinner>
             </button>
           </div>
-          <div class="row">
+          @if (this.errors[REGISTER_IDX]) {
+            <div class="row">
+              <mat-error>{{ this.errors[REGISTER_IDX] }}</mat-error>
+            </div>
+          }
+          <div class="row" style="margin-top: 10px">
             <span>
               Have an account?
               <a routerLink="/auth/login" id="login-btn"> Login </a>

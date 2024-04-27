@@ -22,6 +22,7 @@ export class RegisterComponent {
   readonly LASTNAME_IDX = 1;
   readonly EMAIL_IDX = 2;
   readonly PASSWORD_IDX = 3;
+  readonly REGISTER_IDX = 4;
 
   // follow each idx, shows error message
   errors = [
@@ -29,11 +30,14 @@ export class RegisterComponent {
     'Your last name is required',
     'A valid email is required',
     'Password is required',
+    '',
   ];
 
   hide = true;
 
   hasError = true;
+
+  isLoading = false;
 
   constructor(
     private userService: UsersService,
@@ -96,6 +100,8 @@ export class RegisterComponent {
   }
 
   checkError() {
+    // input gets updated, clean request error
+    this.errors[this.REGISTER_IDX] = '';
     for (const errorMessage of this.errors) {
       if (errorMessage != '') {
         this.hasError = true;
@@ -105,6 +111,31 @@ export class RegisterComponent {
     this.hasError = false;
   }
 
+  private loginHandler = {
+    next: () => {
+      this.router.navigate(['/auth/login']);
+    },
+    error: (error: Error) => {
+      console.log(error);
+    },
+  };
+
+  private registrationObserver = {
+    next: (res: string) => {
+      console.log('users created' + res);
+      if (this.email.value && this.password.value) {
+        this.authService
+          .login(this.email.value, this.password.value)
+          .subscribe(this.loginHandler);
+        this.isLoading = false;
+      }
+    },
+    error: () => {
+      this.errors[this.REGISTER_IDX] = 'User already exists';
+      this.isLoading = false;
+    },
+  };
+
   submitRegister() {
     if (!this.hasError && this.email.value && this.password.value) {
       const reqBody: UserApi = {
@@ -113,18 +144,8 @@ export class RegisterComponent {
         email: this.email.value,
         password: this.password.value,
       };
-      this.userService.usersPost(reqBody).subscribe(
-        (res) => {
-          console.log('users created' + res);
-          if (this.email.value && this.password.value) {
-            this.authService.login(this.email.value, this.password.value);
-            this.router.navigate(['/auth/login']);
-          }
-        },
-        (error) => {
-          console.log(error);
-        },
-      );
+      this.isLoading = true;
+      this.userService.usersPost(reqBody).subscribe(this.registrationObserver);
     }
   }
 }

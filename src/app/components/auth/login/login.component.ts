@@ -63,8 +63,9 @@ export class LoginComponent {
   }
 
   checkError() {
+    // input gets updated, clean request error
+    this.errors[this.LOGIN_IDX] = '';
     for (const errorMessage of this.errors) {
-      this.errors[this.LOGIN_IDX] = '';
       if (errorMessage != '') {
         this.hasError = true;
         return;
