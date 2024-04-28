@@ -1,4 +1,4 @@
-<div *ngIf="state == 0">
+<div [ngClass]="pageState == 0 ? '' : 'hide'">
   <div class="container">
     <div class="row" style="margin: 40px 0">
       <h2>Tell us about your job history</h2>
@@ -8,111 +8,116 @@
       </p>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <mat-form-field class="col">
-        <mat-label>Job Title</mat-label>
-        <input matInput [formControl]="title" />
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Employer</mat-label>
-        <input matInput [formControl]="company" />
-      </mat-form-field>
-      <div class="col"></div>
-    </div>
-    <div class="row">
-      <mat-form-field class="col-3">
-        <mat-label>Country</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>State/Province</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field class="col-3">
-        <mat-label>City</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <div class="col-4"></div>
-    </div>
-    <div class="row" style="margin-bottom: 0px">
-      <mat-form-field class="col-2">
-        <mat-label>Start Month</mat-label>
-        <mat-select>
-          @for (month of months; track month) {
-            <mat-option [value]="month">{{ month }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Start Year</mat-label>
-        <mat-select>
-          @for (year of years; track year) {
-            <mat-option [value]="year">{{ year }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+  <form [formGroup]="form">
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col">
+          <mat-label>Job Title</mat-label>
+          <input matInput formControlName="jobTitle" />
+        </mat-form-field>
+        <mat-form-field class="col">
+          <mat-label>Employer</mat-label>
+          <input matInput formControlName="company" />
+        </mat-form-field>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-3">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName="country" />
+        </mat-form-field>
+        <mat-form-field class="col-2">
+          <mat-label>State/Province</mat-label>
+          <input matInput formControlName="state" />
+        </mat-form-field>
+        <mat-form-field class="col-3">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" />
+        </mat-form-field>
+        <div class="col-4"></div>
+      </div>
+      <div class="row" style="margin-bottom: 0px">
+        <mat-form-field class="col-2">
+          <mat-label>Start Month</mat-label>
+          <mat-select formControlName="startMonth">
+            @for (month of months; track month) {
+              <mat-option [value]="month">{{ month }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-2">
+          <mat-label>Start Year</mat-label>
+          <mat-select formControlName="startYear">
+            @for (year of years; track year) {
+              <mat-option [value]="year">{{ year }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field class="col-2">
-        <mat-label>End Month</mat-label>
-        <mat-select [disabled]="currentWork">
-          @for (month of months; track month) {
-            <mat-option [value]="month">{{ month }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>End Year</mat-label>
-        <mat-select [disabled]="currentWork">
-          @for (year of years; track year) {
-            <mat-option [value]="year">{{ year }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-      <div class="col"></div>
-    </div>
-    <div class="row" style="margin: 0px">
-      <mat-checkbox [color]="'primary'" (change)="currentWorkChange()"
-        >I currently work here</mat-checkbox
-      >
-    </div>
+        <mat-form-field class="col-2">
+          <mat-label>End Month</mat-label>
+          <mat-select formControlName="endMonth">
+            @for (month of months; track month; let idx = $index) {
+              <mat-option [value]="idx + 1">{{ month }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-2">
+          <mat-label>End Year</mat-label>
+          <mat-select formControlName="endYear">
+            @for (year of years; track year) {
+              <mat-option [value]="year">{{ year }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div class="col"></div>
+      </div>
+      <div class="row" style="margin: 0px">
+        <mat-checkbox [color]="'primary'" (change)="currentWorkChange()"
+          >I currently work here</mat-checkbox
+        >
+      </div>
 
-    <div class="row" style="margin-top: 50px">
-      <div class="col-3"></div>
-      <button
-        mat-stroked-button
-        color="primary"
-        class="col-2 form-btn"
-        (click)="back()"
-      >
-        Back
-      </button>
-      <div class="col-1"></div>
-      <button
-        mat-flat-button
-        color="primary"
-        class="col-2 form-btn"
-        (click)="addResponsibility()"
-      >
-        Continue
-      </button>
+      <div class="row" style="margin-top: 50px">
+        <div class="col-3"></div>
+        <button
+          mat-stroked-button
+          color="primary"
+          class="col-2 form-btn"
+          (click)="back()"
+        >
+          Back
+        </button>
+        <div class="col-1"></div>
+        <button
+          mat-flat-button
+          color="primary"
+          class="col-2 form-btn"
+          (click)="addResponsibility()"
+        >
+          Continue
+        </button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
 
-<div *ngIf="state == 1">
+<div [ngClass]="pageState == 1 ? '' : 'hide'">
   <div class="container">
     <div class="row" style="margin: 40px 0">
       <h2>Let's list your responsibilities</h2>
       <p>Start with our recommended bullet points or write your own.</p>
       <div class="container">
         <div class="row subtitle">
-          <p>{{ title.value }} - {{ company.value }}</p>
+          <p>
+            {{ form.controls.jobTitle.value }} -
+            {{ form.controls.company.value }}
+          </p>
         </div>
         <div class="row" style="margin-top: 0px">
           <div class="col-5">
             <p-editor
-              [(ngModel)]="text"
+              [(ngModel)]="description"
               [style]="{ height: '400px', 'font-size': '20px' }"
             >
               <ng-template pTemplate="header">
@@ -174,14 +179,39 @@
   </div>
 </div>
 
-<div *ngIf="state == 2">
+<div [ngClass]="pageState == 2 ? '' : 'hide'">
   <div class="container">
     <div class="row" style="margin: 40px 0">
       <h2>Let's list your responsibilities</h2>
-      <p>Start with our recommended bullet points or write your own.</p>
+      <p>Add, edit, or delete your work experience.</p>
+    </div>
+    <div class="row" *ngFor="let workExp of workExps; index as i">
+      <mat-card>
+        <mat-card-content
+          ><p>
+            {{ workExp.jobTitle }} - {{ workExp.company }}
+          </p></mat-card-content
+        >
+        <mat-card-actions align="end">
+          <button mat-button (click)="editWorkExp(i)">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Edit"
+              fontIcon="edit_square"
+            ></mat-icon>
+          </button>
+          <button mat-button (click)="deleteWorkExp(i)">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Delete"
+              fontIcon="delete"
+            ></mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
     <div class="row" style="margin-top: 50px">
-      <div class="col-3"></div>
+      <div class="col-2"></div>
       <button
         mat-stroked-button
         color="primary"
@@ -189,6 +219,15 @@
         (click)="back()"
       >
         Back
+      </button>
+      <div class="col-1"></div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="addAnotherWorkExp()"
+      >
+        Add another job
       </button>
       <div class="col-1"></div>
       <button
