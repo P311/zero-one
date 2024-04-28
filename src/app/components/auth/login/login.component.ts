@@ -22,7 +22,7 @@ export class LoginComponent {
   readonly PASSWORD_IDX = 1;
   readonly LOGIN_IDX = 2;
 
-  hasError = true;
+  hasError = false;
 
   isLoading = false;
 
