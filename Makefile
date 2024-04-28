@@ -1,7 +1,7 @@
 install:
 	npm install
 
-build: install
+build: install api
 	rm -rf dist
 	npm run build
 
@@ -13,7 +13,7 @@ check_format: install
 	npx prettier . --check
 	npx eslint .
 
-test: install
+test: install api
 	npm run test -- --watch=false
 
 api: install
