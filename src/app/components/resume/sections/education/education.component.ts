@@ -25,11 +25,11 @@ export class EducationComponent {
   edus: EducationApi[] = [];
 
   form = new FormGroup({
-    school: new FormControl<string | null>(null),
-    degree: new FormControl<string | null>(null),
-    field: new FormControl<string | null>(null),
-    state: new FormControl<string | null>(null),
-    city: new FormControl<string | null>(null),
+    school: new FormControl(''),
+    degree: new FormControl(''),
+    field: new FormControl(''),
+    state: new FormControl(''),
+    city: new FormControl(''),
     graduationMonth: new FormControl<number | null>(null),
     graduationYear: new FormControl<number | null>(null),
     gpa: new FormControl<number | null>(null),
@@ -45,10 +45,6 @@ export class EducationComponent {
 
   finishEducation() {
     const val = this.form.value;
-    if (Object.values(val).every((x) => x === null || x === '')) {
-      this.pageState = 1;
-      return;
-    }
     const edu: EducationApi = {
       school: val.school,
       degree: val.degree,

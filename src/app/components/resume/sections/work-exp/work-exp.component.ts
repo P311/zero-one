@@ -83,7 +83,7 @@ export class WorkExpComponent implements AfterViewInit {
     console.log(val);
     if (!val.jobTitle && !val.company) {
       console.log(this.workExps.length);
-      if (this.workExps.length == 0) {
+      if (this.workExps.length == 0){
         const dialogRef = this.dialog.open(WorkExpWarningModalComponent, {
           data: this.modalData,
           autoFocus: false,
