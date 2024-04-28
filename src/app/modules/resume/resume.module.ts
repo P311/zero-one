@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { HeaderComponent } from '../../components/resume/sections/header/header.component';
 import { ResumeNavComponent } from '../../components/resume/resume-nav/resume-nav.component';
@@ -24,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { EducationComponent } from '../../components/resume/sections/education/education.component';
 import { SkillsComponent } from '../../components/resume/sections/skills/skills.component';
 import { SummaryComponent } from '../../components/resume/sections/summary/summary.component';
+import { WorkExpWarningModalComponent } from '../../components/resume/sections/work-exp-warning-modal/work-exp-warning-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { SummaryComponent } from '../../components/resume/sections/summary/summa
     EducationComponent,
     SkillsComponent,
     SummaryComponent,
+    WorkExpWarningModalComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +55,7 @@ import { SummaryComponent } from '../../components/resume/sections/summary/summa
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
+    MatDialogModule,
   ],
 })
 export class ResumeModule {}
