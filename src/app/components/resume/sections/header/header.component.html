@@ -37,10 +37,7 @@
     <div class="row">
       <mat-form-field class="col">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email" required />
-        @if (form.controls.email.invalid) {
-          <mat-error>Email can't be blank</mat-error>
-        }
+        <input matInput formControlName="email" />
       </mat-form-field>
       <mat-form-field class="col">
         <mat-label>Phone</mat-label>

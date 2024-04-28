@@ -22,15 +22,7 @@ export class HeaderComponent {
 
   @Output() indexChange = new EventEmitter<number>();
 
-  isValid() {
-    return this.form.controls.email.valid;
-  }
-
   submitForm() {
-    this.form.markAllAsTouched();
-    if (!this.isValid()) {
-      return;
-    }
     const val = this.form.value;
     this.header = {
       name: val.name,
