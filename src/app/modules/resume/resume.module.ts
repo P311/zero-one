@@ -21,6 +21,7 @@ import { WorkExpComponent } from '../../components/resume/sections/work-exp/work
 import { EditorModule } from 'primeng/editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { EducationComponent } from '../../components/resume/sections/education/education.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     HeaderComponent,
     ResumeNavComponent,
     WorkExpComponent,
+    EducationComponent,
   ],
   imports: [
     CommonModule,
