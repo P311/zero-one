@@ -1,14 +1,31 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { MONTHS, YEARS } from '../../../../globals';
 import { FormControl, FormGroup } from '@angular/forms';
 import { WorkExperienceApi } from '../../../../../../api/api';
+import { MatDialog } from '@angular/material/dialog';
+import { WorkExpWarningModalComponent } from '../work-exp-warning-modal/work-exp-warning-modal.component';
 
 @Component({
   selector: 'app-work-exp',
   templateUrl: './work-exp.component.html',
   styleUrl: './work-exp.component.scss',
 })
-export class WorkExpComponent {
+export class WorkExpComponent implements AfterViewInit {
+  constructor(
+    public dialog: MatDialog,
+    public cdf: ChangeDetectorRef,
+  ) {}
+
+  ngAfterViewInit() {
+    this.cdf.detectChanges();
+  }
+
   public currentWork: boolean = false;
 
   // pageState for work exp page
@@ -45,7 +62,37 @@ export class WorkExpComponent {
     this.indexChange.emit(0);
   }
 
+  isValid() {
+    // both empty or both non-empty
+    return (
+      (this.form.controls.company.value == '' &&
+        this.form.controls.jobTitle.value == '') ||
+      (this.form.controls.company.value != '' &&
+        this.form.controls.jobTitle.value != '')
+    );
+  }
+
+  modalData = false;
+
   addResponsibility() {
+    this.form.markAllAsTouched();
+    if (!this.isValid()) {
+      return;
+    }
+    const val = this.form.value;
+    if (val.jobTitle == '' && val.company == '') {
+      const dialogRef = this.dialog.open(WorkExpWarningModalComponent, {
+        data: this.modalData,
+        autoFocus: false,
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.pageState = 2;
+          this.submitForm();
+        }
+      });
+      return;
+    }
     this.pageState = 1;
   }
 

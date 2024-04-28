@@ -14,10 +14,22 @@
         <mat-form-field class="col">
           <mat-label>Job Title</mat-label>
           <input matInput formControlName="jobTitle" />
+          @if (
+            form.controls.company.value != "" &&
+            form.controls.jobTitle.value == ""
+          ) {
+            <mat-error>Job title can't be blank</mat-error>
+          }
         </mat-form-field>
         <mat-form-field class="col">
           <mat-label>Employer</mat-label>
           <input matInput formControlName="company" />
+          @if (
+            form.controls.jobTitle.value != "" &&
+            form.controls.company.value == ""
+          ) {
+            <mat-error>Employer can't be blank</mat-error>
+          }
         </mat-form-field>
         <div class="col"></div>
       </div>
