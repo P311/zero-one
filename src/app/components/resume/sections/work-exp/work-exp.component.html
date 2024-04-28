@@ -1,4 +1,4 @@
-<div *ngIf="addWorkExp">
+<div *ngIf="state == 0">
   <div class="container">
     <div class="row" style="margin: 40px 0">
       <h2>Tell us about your job history</h2>
@@ -12,11 +12,11 @@
     <div class="row">
       <mat-form-field class="col">
         <mat-label>Job Title</mat-label>
-        <input matInput />
+        <input matInput [formControl]="title" />
       </mat-form-field>
       <mat-form-field class="col">
         <mat-label>Employer</mat-label>
-        <input matInput />
+        <input matInput [formControl]="company" />
       </mat-form-field>
       <div class="col"></div>
     </div>
@@ -46,7 +46,11 @@
       </mat-form-field>
       <mat-form-field class="col-2">
         <mat-label>Start Year</mat-label>
-        <input matInput />
+        <mat-select>
+          @for (year of years; track year) {
+            <mat-option [value]="year">{{ year }}</mat-option>
+          }
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field class="col-2">
@@ -59,7 +63,11 @@
       </mat-form-field>
       <mat-form-field class="col-2">
         <mat-label>End Year</mat-label>
-        <input matInput [disabled]="currentWork" />
+        <mat-select [disabled]="currentWork">
+          @for (year of years; track year) {
+            <mat-option [value]="year">{{ year }}</mat-option>
+          }
+        </mat-select>
       </mat-form-field>
       <div class="col"></div>
     </div>
@@ -84,7 +92,7 @@
         mat-flat-button
         color="primary"
         class="col-2 form-btn"
-        (click)="submitForm()"
+        (click)="addResponsibility()"
       >
         Continue
       </button>
@@ -92,14 +100,105 @@
   </div>
 </div>
 
-<div *ngIf="!addWorkExp">
+<div *ngIf="state == 1">
   <div class="container">
     <div class="row" style="margin: 40px 0">
-      <h2>Tell us about your job history</h2>
-      <p>
-        Don't have any work experience? Add school leadership positions,
-        internships, summer jobs, and unofficial jobs.
-      </p>
+      <h2>Let's list your responsibilities</h2>
+      <p>Start with our recommended bullet points or write your own.</p>
+      <div class="container">
+        <div class="row subtitle">
+          <p>{{ title.value }} - {{ company.value }}</p>
+        </div>
+        <div class="row" style="margin-top: 0px">
+          <div class="col-5">
+            <p-editor
+              [(ngModel)]="text"
+              [style]="{ height: '400px', 'font-size': '20px' }"
+            >
+              <ng-template pTemplate="header">
+                <span class="ql-formats">
+                  <button
+                    type="button"
+                    class="ql-bold"
+                    aria-label="Bold"
+                  ></button>
+                  <button
+                    type="button"
+                    class="ql-italic"
+                    aria-label="Italic"
+                  ></button>
+                  <button
+                    type="button"
+                    class="ql-underline"
+                    aria-label="Underline"
+                  ></button>
+                  <button
+                    type="button"
+                    class="ql-list"
+                    aria-label="Ordered List"
+                    value="ordered"
+                  ></button>
+                  <button
+                    type="button"
+                    class="ql-list"
+                    aria-label="Unordered List"
+                    value="bullet"
+                  ></button>
+                </span>
+              </ng-template>
+            </p-editor>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 50px">
+          <div class="col-3"></div>
+          <button
+            mat-stroked-button
+            color="primary"
+            class="col-2 form-btn"
+            (click)="backToAddWorkExp()"
+          >
+            Back
+          </button>
+          <div class="col-1"></div>
+          <button
+            mat-flat-button
+            color="primary"
+            class="col-2 form-btn"
+            (click)="finishResponsibility()"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="state == 2">
+  <div class="container">
+    <div class="row" style="margin: 40px 0">
+      <h2>Let's list your responsibilities</h2>
+      <p>Start with our recommended bullet points or write your own.</p>
+    </div>
+    <div class="row" style="margin-top: 50px">
+      <div class="col-3"></div>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="back()"
+      >
+        Back
+      </button>
+      <div class="col-1"></div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="submitForm()"
+      >
+        Continue
+      </button>
     </div>
   </div>
 </div>

@@ -17,6 +17,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HeaderComponent } from '../../components/resume/sections/header/header.component';
 import { ResumeNavComponent } from '../../components/resume/resume-nav/resume-nav.component';
 import { WorkExpComponent } from '../../components/resume/sections/work-exp/work-exp.component';
+import { EditorModule } from 'primeng/editor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,9 @@ import { WorkExpComponent } from '../../components/resume/sections/work-exp/work
     MatSelectModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    EditorModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class ResumeModule {}

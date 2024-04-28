@@ -7,9 +7,7 @@
   "paths": {
     "/Identity/token": {
       "post": {
-        "tags": [
-          "Identity"
-        ],
+        "tags": ["Identity"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -95,9 +93,7 @@
     },
     "/Resumes": {
       "get": {
-        "tags": [
-          "Resumes"
-        ],
+        "tags": ["Resumes"],
         "responses": {
           "200": {
             "description": "Success",
@@ -162,9 +158,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Resumes"
-        ],
+        "tags": ["Resumes"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -270,9 +264,7 @@
     },
     "/Resumes/{id}": {
       "get": {
-        "tags": [
-          "Resumes"
-        ],
+        "tags": ["Resumes"],
         "parameters": [
           {
             "name": "id",
@@ -349,9 +341,7 @@
     },
     "/Users": {
       "post": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -637,10 +627,7 @@
         "additionalProperties": false
       },
       "UserApi": {
-        "required": [
-          "email",
-          "password"
-        ],
+        "required": ["email", "password"],
         "type": "object",
         "properties": {
           "email": {
@@ -715,7 +702,7 @@
   },
   "security": [
     {
-      "Bearer": [ ]
+      "Bearer": []
     }
   ]
 }

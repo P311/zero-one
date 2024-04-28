@@ -20,14 +20,14 @@ const routes: Routes = [
         (m) => m.DashboardModule,
       ),
     canActivateChild: [authguard],
-    canActivate: [authguard]
+    canActivate: [authguard],
   },
   {
     path: 'resume',
     loadChildren: () =>
       import('./modules/resume/resume.module').then((m) => m.ResumeModule),
-    canActivateChild: [authguard],
-    canActivate: [authguard]
+    // canActivateChild: [authguard],
+    // canActivate: [authguard]
   },
 ];
 
