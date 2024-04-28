@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MONTHS } from '../../../../globals';
+import { MONTHS, YEARS } from '../../../../globals';
 import { FormControl, FormGroup } from '@angular/forms';
 import { WorkExperienceApi } from '../../../../../../api/api';
 
@@ -19,9 +19,7 @@ export class WorkExpComponent {
 
   readonly months = MONTHS;
 
-  year = new Date().getFullYear();
-
-  readonly years = Array.from({ length: 90 }, (v, k) => this.year - k);
+  readonly years = YEARS;
 
   @Output() indexChange = new EventEmitter<number>();
 

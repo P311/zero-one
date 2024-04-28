@@ -480,7 +480,8 @@
           },
           "gpa": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "courses": {
             "type": "array",

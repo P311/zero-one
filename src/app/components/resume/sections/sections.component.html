@@ -50,5 +50,9 @@
       [ngClass]="selectedIndex == 1 ? '' : 'not-show'"
       (indexChange)="moveSection($event)"
     ></app-work-exp>
+    <app-education
+      [ngClass]="selectedIndex == 2 ? '' : 'not-show'"
+      (indexChange)="moveSection($event)"
+    ></app-education>
   </section>
 </mat-drawer-container>

@@ -1,5 +1,9 @@
 import { template } from './objects/template';
 
+const year = new Date().getFullYear();
+
+export const YEARS = Array.from({ length: 90 }, (v, k) => year - k);
+
 export const MONTHS = [
   'Janurary',
   'Febrary',

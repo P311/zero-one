@@ -1,1 +1,146 @@
-<p>education works!</p>
+<div [ngClass]="pageState == 0 ? '' : 'hide'">
+  <div class="container">
+    <div class="row" style="margin: 40px 0">
+      <h2>Tell us about your education</h2>
+      <p>Where did you attend college or university?</p>
+    </div>
+  </div>
+  <form [formGroup]="form">
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col">
+          <mat-label>School Name</mat-label>
+          <input matInput formControlName="school" />
+        </mat-form-field>
+        <mat-form-field class="col">
+          <mat-label>Degree or Program</mat-label>
+          <input matInput formControlName="degree" />
+        </mat-form-field>
+        <div class="col"></div>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-3">
+          <mat-label>Field of Study</mat-label>
+          <input matInput formControlName="field" />
+        </mat-form-field>
+        <mat-form-field class="col-2">
+          <mat-label>State/Province</mat-label>
+          <input matInput formControlName="state" />
+        </mat-form-field>
+        <mat-form-field class="col-3">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" />
+        </mat-form-field>
+        <div class="col-4"></div>
+      </div>
+      <div class="row" style="margin-bottom: 0px">
+        <mat-form-field class="col-2">
+          <mat-label>Graduation Month</mat-label>
+          <mat-select formControlName="graduationMonth">
+            @for (month of months; track month) {
+              <mat-option [value]="month">{{ month }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-2">
+          <mat-label>Graduation Year</mat-label>
+          <mat-select formControlName="graduationYear">
+            @for (year of years; track year) {
+              <mat-option [value]="year">{{ year }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-4">
+          <mat-label>GPA Score</mat-label>
+          <input matInput formControlName="gpa" />
+        </mat-form-field>
+        <div class="col"></div>
+      </div>
+
+      <div class="row" style="margin-top: 50px">
+        <div class="col-3"></div>
+        <button
+          mat-stroked-button
+          color="primary"
+          class="col-2 form-btn"
+          (click)="back()"
+        >
+          Back
+        </button>
+        <div class="col-1"></div>
+        <button
+          mat-flat-button
+          color="primary"
+          class="col-2 form-btn"
+          (click)="finishEducation()"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div [ngClass]="pageState == 1 ? '' : 'hide'">
+  <div class="container">
+    <div class="row" style="margin: 40px 0">
+      <h2>Let's list your responsibilities</h2>
+      <p>Add, edit, or delete your work experience.</p>
+    </div>
+    <div class="row" *ngFor="let edu of edus; index as i">
+      <mat-card>
+        <mat-card-content
+          ><p>
+            {{ edu.school }} - {{ edu.degree }} - {{ edu.field }}
+          </p></mat-card-content
+        >
+        <mat-card-actions align="end">
+          <button mat-button (click)="editEdu(i)">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Edit"
+              fontIcon="edit_square"
+            ></mat-icon>
+          </button>
+          <button mat-button (click)="deleteEdu(i)">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Delete"
+              fontIcon="delete"
+            ></mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="row" style="margin-top: 50px">
+      <div class="col-1"></div>
+      <button
+        mat-stroked-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="back()"
+      >
+        Back
+      </button>
+      <div class="col-1"></div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="col-3 form-btn"
+        (click)="addAnotherEdu()"
+      >
+        Add another education
+      </button>
+      <div class="col-1"></div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="col-2 form-btn"
+        (click)="submitForm()"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
