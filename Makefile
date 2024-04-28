@@ -17,5 +17,5 @@ test: install api
 	npm run test -- --watch=false
 
 api: install
-	openapi-generator-cli generate -i api/swagger.json -g typescript-angular -o api/api
+	npx openapi-generator-cli generate -i ./api/swagger.json -g typescript-angular -o ./api/api
 
