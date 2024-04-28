@@ -22,6 +22,7 @@ import { EditorModule } from 'primeng/editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { EducationComponent } from '../../components/resume/sections/education/education.component';
+import { SkillsComponent } from '../../components/resume/sections/skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EducationComponent } from '../../components/resume/sections/education/e
     ResumeNavComponent,
     WorkExpComponent,
     EducationComponent,
+    SkillsComponent,
   ],
   imports: [
     CommonModule,
