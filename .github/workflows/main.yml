@@ -16,7 +16,7 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - name: Format Check
+      - name: Test
         uses: actions/checkout@v4
       - run: |
           cd ${{ github.workspace }} 
