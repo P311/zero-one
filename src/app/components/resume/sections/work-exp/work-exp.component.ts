@@ -119,7 +119,7 @@ export class WorkExpComponent {
   }
 
   deleteWorkExp(idx: number) {
-    this.workExps.splice(idx);
+    this.workExps.splice(idx, 1);
     if (this.workExps.length == 0) {
       this.form.reset();
       this.description = '';

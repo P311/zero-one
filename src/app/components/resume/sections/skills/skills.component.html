@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row" style="margin: 40px 0">
+    <h2>Skills</h2>
+    <p>
+      You're on a roll. Let's find relevant skills for the job your applying
+      for. Listing 6-10 skills is best.
+    </p>
+  </div>
+  <div class="row" *ngFor="let skill of skillForms; index as i">
+    <mat-form-field class="col-6">
+      <mat-label>Skill {{ i + 1 }}</mat-label>
+      <input matInput [formControl]="skill" />
+      <button
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="deleteSkill(i)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <a (click)="addSkill()" id="add-btn"> Add another one</a>
+  </div>
+
+  <div class="row" style="margin-top: 50px">
+    <div class="col-3"></div>
+    <button
+      mat-stroked-button
+      color="primary"
+      class="col-2 form-btn"
+      (click)="back()"
+    >
+      Back
+    </button>
+    <div class="col-1"></div>
+    <button
+      mat-flat-button
+      color="primary"
+      class="col-2 form-btn"
+      (click)="finishSkills()"
+    >
+      Continue
+    </button>
+  </div>
+</div>

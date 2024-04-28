@@ -28,6 +28,8 @@ export class EducationComponent {
     school: new FormControl(''),
     degree: new FormControl(''),
     field: new FormControl(''),
+    state: new FormControl(''),
+    city: new FormControl(''),
     graduationMonth: new FormControl<number | null>(null),
     graduationYear: new FormControl<number | null>(null),
     gpa: new FormControl<number | null>(null),
@@ -79,12 +81,14 @@ export class EducationComponent {
       graduationMonth: edu.graduationMonth ? edu.graduationMonth : null,
       graduationYear: edu.graduationYear ? edu.graduationYear : null,
       gpa: edu.gpa ? edu.gpa : null,
+      city: '',
+      state: '',
     });
     this.backToEdu();
   }
 
   deleteEdu(idx: number) {
-    this.edus.splice(idx);
+    this.edus.splice(idx, 1);
     if (this.edus.length == 0) {
       this.form.reset();
       this.backToEdu();
