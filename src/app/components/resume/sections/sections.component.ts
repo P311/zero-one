@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './sections.component.scss',
 })
 export class SectionsComponent {
-  public selectedIndex = 3;
+  public selectedIndex = 4;
 
   constructor(
     private activatedRoute: ActivatedRoute,

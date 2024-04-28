@@ -33,9 +33,6 @@
         <ng-template matStepLabel>Summary</ng-template>
       </mat-step>
       <mat-step [completed]="this.selectedIndex > 4">
-        <ng-template matStepLabel>Languages</ng-template>
-      </mat-step>
-      <mat-step [completed]="this.selectedIndex > 5">
         <ng-template matStepLabel>Finalize</ng-template>
       </mat-step>
     </mat-stepper>
@@ -58,5 +55,9 @@
       [ngClass]="selectedIndex == 3 ? '' : 'not-show'"
       (indexChange)="moveSection($event)"
     ></app-skills>
+    <app-summary
+      [ngClass]="selectedIndex == 4 ? '' : 'not-show'"
+      (indexChange)="moveSection($event)"
+    ></app-summary>
   </section>
 </mat-drawer-container>

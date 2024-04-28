@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { EducationComponent } from '../../components/resume/sections/education/education.component';
 import { SkillsComponent } from '../../components/resume/sections/skills/skills.component';
+import { SummaryComponent } from '../../components/resume/sections/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SkillsComponent } from '../../components/resume/sections/skills/skills.
     WorkExpComponent,
     EducationComponent,
     SkillsComponent,
+    SummaryComponent,
   ],
   imports: [
     CommonModule,

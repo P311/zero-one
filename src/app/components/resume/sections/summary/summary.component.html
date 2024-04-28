@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row" style="margin: 40px 0">
+    <h2>Professional Summary</h2>
+    <p>
+      You're in the final stretch! We'll help you sell yourself to the hiring
+      manager in a few short sentences.
+    </p>
+  </div>
+  <div class="row" style="margin-top: 0px">
+    <div class="col-5">
+      <p-editor
+        [(ngModel)]="summary"
+        [style]="{ height: '400px', 'font-size': '20px', color: 'black' }"
+      >
+        <ng-template pTemplate="header">
+          <span class="ql-formats">
+            <button type="button" class="ql-bold" aria-label="Bold"></button>
+            <button
+              type="button"
+              class="ql-italic"
+              aria-label="Italic"
+            ></button>
+            <button
+              type="button"
+              class="ql-underline"
+              aria-label="Underline"
+            ></button>
+            <button
+              type="button"
+              class="ql-list"
+              aria-label="Ordered List"
+              value="ordered"
+            ></button>
+            <button
+              type="button"
+              class="ql-list"
+              aria-label="Unordered List"
+              value="bullet"
+            ></button>
+          </span>
+        </ng-template>
+      </p-editor>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 50px">
+    <div class="col-3"></div>
+    <button
+      mat-stroked-button
+      color="primary"
+      class="col-2 form-btn"
+      (click)="back()"
+    >
+      Back
+    </button>
+    <div class="col-1"></div>
+    <button
+      mat-flat-button
+      color="primary"
+      class="col-2 form-btn"
+      (click)="submitForm()"
+    >
+      Continue
+    </button>
+  </div>
+</div>
