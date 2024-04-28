@@ -45,11 +45,11 @@ export class WorkExpComponent implements AfterViewInit {
   currentWorkExp: number = -1;
 
   form = new FormGroup({
-    jobTitle: new FormControl(''),
-    company: new FormControl(''),
-    country: new FormControl(''),
-    state: new FormControl(''),
-    city: new FormControl(''),
+    jobTitle: new FormControl<string | null>(null),
+    company: new FormControl<string | null>(null),
+    country: new FormControl<string | null>(null),
+    state: new FormControl<string | null>(null),
+    city: new FormControl<string | null>(null),
     startMonth: new FormControl<number | null>(null),
     startYear: new FormControl<number | null>(null),
     endMonth: new FormControl<number | null>(null),
@@ -80,17 +80,23 @@ export class WorkExpComponent implements AfterViewInit {
       return;
     }
     const val = this.form.value;
-    if (val.jobTitle == '' && val.company == '') {
-      const dialogRef = this.dialog.open(WorkExpWarningModalComponent, {
-        data: this.modalData,
-        autoFocus: false,
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result) {
-          this.pageState = 2;
-          this.submitForm();
-        }
-      });
+    console.log(val);
+    if (!val.jobTitle && !val.company) {
+      console.log(this.workExps.length);
+      if (this.workExps.length == 0){
+        const dialogRef = this.dialog.open(WorkExpWarningModalComponent, {
+          data: this.modalData,
+          autoFocus: false,
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+          if (result) {
+            this.pageState = 2;
+            this.submitForm();
+          }
+        });
+      } else {
+        this.pageState = 2;
+      }
       return;
     }
     this.pageState = 1;
