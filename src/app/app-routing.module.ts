@@ -19,8 +19,8 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule,
       ),
-    canActivateChild: [authguard],
-    canActivate: [authguard],
+    // canActivateChild: [authguard],
+    // canActivate: [authguard],
   },
   {
     path: 'resume',

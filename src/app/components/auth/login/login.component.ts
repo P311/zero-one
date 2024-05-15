@@ -102,6 +102,8 @@ export class LoginComponent {
         'Incorrect email or password. Please try again.';
     },
   };
+
+  
   submitLogin() {
     if (!this.hasError && this.email.value && this.password.value) {
       this.isLoading = true;
